@@ -1,0 +1,7 @@
+package com.spring.boot.bean;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class User {
+}

@@ -1,0 +1,10 @@
+jdbc.jdbcUrl: jdbc:mysql:///mybatis_db?characterEncoding=UTF-8
+jdbc.jdbcUrls: this myData ${jdbc.jdbcUrl}
+ds.list[0]: 123
+ds.list[1]: 456
+ds.list[2]: 789
+runnable.enabled: true
+#配置监听器
+#context.listener.classes: com.spring.boot.st11.ApplicationListener
+context.initializer.classes: com.spring.boot.st12.MyApplicationContextInitializer,com.spring.boot.st12.EzApplicationContextInitializer
+#context.initializer.classes: com.spring.boot.st12.EzApplicationContextInitializer

@@ -1,0 +1,5 @@
+server:
+  port: 8080
+
+spring.view.prefix: /webapp/
+#spring.view.suffix: .html

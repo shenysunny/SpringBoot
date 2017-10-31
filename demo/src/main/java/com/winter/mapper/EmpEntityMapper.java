@@ -1,8 +1,8 @@
-package com.springboot.mybatis.mapper;
+package com.winter.mapper;
 
 import java.util.List;
-import com.springboot.mybatis.entity.EmpEntity;
-import com.springboot.mybatis.entity.EmpEntityExample;
+import com.winter.model.EmpEntity;
+import com.winter.model.EmpEntityExample;
 import org.apache.ibatis.annotations.Param;
 
 public interface EmpEntityMapper {

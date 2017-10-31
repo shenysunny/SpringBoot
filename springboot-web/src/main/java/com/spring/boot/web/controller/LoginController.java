@@ -1,7 +1,9 @@
 package com.spring.boot.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -17,4 +19,16 @@ public class LoginController  {
         // 转发到相应页面
         return model;
     }
+
+    @RequestMapping("/args" )
+    public String args(){
+        throw new ArithmeticException("----------------------------");
+    }
+
+    @ResponseBody
+    @ExceptionHandler(value = ArithmeticException.class)
+    public String error(ArithmeticException e){
+        return "出错了" + e.getMessage();
+    }
+
 }

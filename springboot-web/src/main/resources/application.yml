@@ -1,5 +1,17 @@
-server:
-  port: 8080
+#server:
+#  port: 8080    # 端口
+#  address: 192.168.2.1 # IP
+#  tomcat:
+#    accesslog:
+#      enabled: false # 是否启用日志
 
-spring.view.prefix: /webapp/
-#spring.view.suffix: .html
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  aop:
+    auto: true #启用aop
+
+pring.profiles.active: dev
+logging.level.org.springframework.web: info

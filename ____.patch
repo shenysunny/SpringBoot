@@ -1,0 +1,1815 @@
+Index: springboot/src/main/java/com/spring/boot/enable/MyImportSelector.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/enable/MyImportSelector.java	(revision )
++++ springboot/src/main/java/com/spring/boot/enable/MyImportSelector.java	(revision )
+@@ -0,0 +1,11 @@
++package com.spring.boot.enable;
++
++import org.springframework.context.annotation.ImportSelector;
++import org.springframework.core.type.AnnotationMetadata;
++
++public class MyImportSelector implements ImportSelector {
++    @Override
++    public String[] selectImports(AnnotationMetadata annotationMetadata) {
++        return new String[]{"com.spring.boot.enable;"};
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport1.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport1.java	(revision )
+@@ -0,0 +1,16 @@
++package com.spring.boot.st12;
++
++import org.springframework.boot.CommandLineRunner;
++import org.springframework.core.annotation.Order;
++import org.springframework.stereotype.Component;
++
++import java.util.Arrays;
++
++@Order(1)
++@Component
++public class ServzrSuccessReport1 implements CommandLineRunner {
++    @Override
++    public void run(String... strings) throws Exception {
++        System.out.println("A: ================ServzrSuccessReport================" + Arrays.asList(strings));
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/st12/SpringbootApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/SpringbootApplication.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/SpringbootApplication.java	(revision )
+@@ -0,0 +1,17 @@
++package com.spring.boot.st12;
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.ConfigurableApplicationContext;
++
++/**
++ * 项目启动
++ */
++@SpringBootApplication(scanBasePackages = "com.spring.boot")
++public class SpringbootApplication {
++
++    public static void main(String[] args) {
++        SpringApplication app = new SpringApplication(SpringbootApplication.class);
++        ConfigurableApplicationContext context = app.run("aa","bb","cc");
++        context.close();
++    }
++}
+Index: .idea/libraries/Maven__org_eclipse_jdt_ecj_3_12_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_eclipse_jdt_ecj_3_12_3.xml	(revision )
++++ .idea/libraries/Maven__org_eclipse_jdt_ecj_3_12_3.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.eclipse.jdt:ecj:3.12.3">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/eclipse/jdt/ecj/3.12.3/ecj-3.12.3.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/eclipse/jdt/ecj/3.12.3/ecj-3.12.3-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/eclipse/jdt/ecj/3.12.3/ecj-3.12.3-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: docs/目录.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- docs/目录.txt	(revision )
++++ docs/目录.txt	(revision )
+@@ -0,0 +1,67 @@
++Spring Boot实战与原理分析视频课程
++
++课程目录:
++
++1 Spring Boot概述与课程概要介绍20:33
++
++2 Spring4 快速入门59:56
++
++3 Spring4 扩展分析（一）35:49
++
++4 Spring4 扩展分析（二）21:11
++
++5 Spring Boot 快速入门24:01
++
++6 Spring Boot 配置分析（一）38:26
++
++7 Spring Boot 配置分析（二）35:47
++
++8 Spring Boot 自动配置32:44
++
++9 Spring Boot @Enable*注解的工作原理47:07--
++
++10 Spring Boot @EnableAutoConfiguration深入分析30:55--
++
++11 Spring Boot 事件监听27:53
++--四种方式讲解如何配置事件监听
++
++12 Spring Boot 扩展分析33:54
++
++13 Spring Boot 补充讲解21:59
++
++14 Spring Boot 运行流程分 析31:48
++
++15 Spring Boot Web（一）59:01
++
++16 Spring Boot Web（二）35:33
++
++17 Spring Boot Web（三）38:48
++
++18 Spring Boot 定制和优化内嵌的Tomcat35:14
++--定制和优化Tomcat，以编码的方式设置Tomcat的各个属性值，以及Tomcat的日志配置
++
++19 Spring Boot JDBC38:38
++--多种数据源的配置、JdbcTemplate、事务的处理
++
++20 Spring Boot AOP
++
++21 Spring Boot Starter18:31
++--快速构建自定义的Spring Boot Starter
++
++22 Spring Boot 日志30:58
++--演示了如何在Spring Boot里面使用日志配置，以及logback，log4j2等日志的使用
++
++23 Spring Boot 监控和度量47:09
++--Spring Boot内置的监控点、自定义的监控状况检查、自定义度量统计，输出等等
++
++24 Spring Boot 测试54:13
++--实战演示在Spring Boot里面的测试案例，以及如何测试Controller
++
++25 Spring Boot 构建微服务实战01:01:50
++--一分钟配置一个Spring boot + Mybatis的微服务环境
++
++26 Spring Boot 服务的注册和发现41:53
++
++27 Spring Boot 应用的打包和部署35:41
++--两种方式演示服务的打包，部署，运行
++
+Index: springboot/src/main/java/com/spring/boot/bean/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/User.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/User.java	(revision )
+@@ -0,0 +1,7 @@
++package com.spring.boot.bean;
++
++import org.springframework.stereotype.Component;
++
++@Component
++public class User {
++}
+Index: springboot/src/main/java/com/spring/boot/enable/Jepp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/enable/Jepp.java	(revision )
++++ springboot/src/main/java/com/spring/boot/enable/Jepp.java	(revision )
+@@ -0,0 +1,22 @@
++package com.spring.boot.enable;
++
++import org.springframework.scheduling.annotation.Async;
++import org.springframework.stereotype.Component;
++
++import java.util.concurrent.TimeUnit;
++@Component
++public class Jepp implements Runnable {
++    @Override
++    @Async
++    public void run() {
++        for (int i=0 ; i<10 ; i++){
++            try {
++                System.out.println("=================="+i);
++                TimeUnit.SECONDS.sleep(1);
++            } catch (InterruptedException e) {
++                e.printStackTrace();
++            }
++
++        }
++    }
++}
+Index: .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_16.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_16.xml	(revision )
++++ .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_16.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.16">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/8.5.16/tomcat-embed-jasper-8.5.16.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/8.5.16/tomcat-embed-jasper-8.5.16-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-jasper/8.5.16/tomcat-embed-jasper-8.5.16-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot-web/src/main/resources/public/500.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/resources/public/500.html	(revision )
++++ springboot-web/src/main/resources/public/500.html	(revision )
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++<h1>500</h1>
++</body>
++</html>
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/controller/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/controller/index.html	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/controller/index.html	(revision )
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++66666666666666666
++</body>
++</html>
+\ No newline at end of file
+Index: springboot-web/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/.gitignore	(revision )
++++ springboot-web/.gitignore	(revision )
+@@ -0,0 +1,24 @@
++target/
++!.mvn/wrapper/maven-wrapper.jar
++
++### STS ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++
++### IntelliJ IDEA ###
++.idea
++*.iws
++*.iml
++*.ipr
++
++### NetBeans ###
++nbproject/private/
++build/
++nbbuild/
++dist/
++nbdist/
++.nb-gradle/
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/controller/UserController.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/controller/UserController.java	(revision )
+@@ -0,0 +1,24 @@
++package com.spring.boot.web.controller;
++import org.springframework.web.bind.annotation.*;
++
++/**
++ * 控制层
++ */
++@RestController
++public class UserController {
++
++    @RequestMapping("/home" )
++    public String home(){
++        return "user home";
++    }
++
++    @RequestMapping("/home/ {id}" )
++    public String display(@PathVariable String id){
++        return "user display";
++    }
++
++    @PostMapping("user")
++    public String user(@RequestPart(value = "usernamr",required = false)String usernamr , @RequestPart("password")String password){
++        return "hello ---> user";
++    }
++}
+Index: .idea/libraries/Maven__org_springframework_spring_webmvc_4_3_12_RELEASE.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_springframework_spring_webmvc_4_3_12_RELEASE.xml	(revision )
++++ .idea/libraries/Maven__org_springframework_spring_webmvc_4_3_12_RELEASE.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.springframework:spring-webmvc:4.3.12.RELEASE">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-webmvc/4.3.12.RELEASE/spring-webmvc-4.3.12.RELEASE-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot-web/src/test/java/com/spring/boot/web/app/SpringbootWebApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/test/java/com/spring/boot/web/app/SpringbootWebApplicationTests.java	(revision )
++++ springboot-web/src/test/java/com/spring/boot/web/app/SpringbootWebApplicationTests.java	(revision )
+@@ -0,0 +1,16 @@
++package com.spring.boot.web.app;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++import org.springframework.boot.test.context.SpringBootTest;
++import org.springframework.test.context.junit4.SpringRunner;
++
++@RunWith(SpringRunner.class)
++@SpringBootTest
++public class SpringbootWebApplicationTests {
++
++	@Test
++	public void contextLoads() {
++	}
++
++}
+Index: .idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml	(revision )
++++ .idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_23.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.23">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/tomcat-annotations-api/8.5.23/tomcat-annotations-api-8.5.23.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/tomcat-annotations-api/8.5.23/tomcat-annotations-api-8.5.23-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/tomcat-annotations-api/8.5.23/tomcat-annotations-api-8.5.23-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot/src/main/resources/application.properties
+===================================================================
+--- springboot/src/main/resources/application.properties	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ springboot/src/main/resources/application.properties	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
+@@ -1,0 +0,0 @@
+Index: .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml	(revision )
++++ .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_23.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.tomcat.embed:tomcat-embed-el:8.5.23">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.23/tomcat-embed-el-8.5.23.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.23/tomcat-embed-el-8.5.23-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.23/tomcat-embed-el-8.5.23-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/st12/MyApplicationRunner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/MyApplicationRunner.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/MyApplicationRunner.java	(revision )
+@@ -0,0 +1,16 @@
++package com.spring.boot.st12;
++
++import org.springframework.boot.ApplicationArguments;
++import org.springframework.boot.ApplicationRunner;
++import org.springframework.core.annotation.Order;
++import org.springframework.stereotype.Component;
++
++import java.util.Arrays;
++@Order(3)
++@Component
++public class MyApplicationRunner implements ApplicationRunner {
++    @Override
++    public void run(ApplicationArguments applicationArguments) throws Exception {
++        System.out.println("C =============== " + Arrays.asList(applicationArguments.getSourceArgs()));
++    }
++}
+Index: springboot-web/src/main/java/com/spring/boot/web/controller/LoginController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/controller/LoginController.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/controller/LoginController.java	(revision )
+@@ -0,0 +1,20 @@
++package com.spring.boot.web.controller;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.servlet.ModelAndView;
++
++@Controller
++public class LoginController  {
++
++    @RequestMapping("/login" )
++    public ModelAndView login(ModelAndView model){
++        System.out.println("login");
++        // 将注册相信保存到model中
++        model.addObject("username", "username");
++        // 保存转发的地址
++        model.setViewName("forward:index.html");
++        // 转发到相应页面
++        return model;
++    }
++}
+Index: springboot-web/src/main/webapp/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/webapp/index.html	(revision )
++++ springboot-web/src/main/webapp/index.html	(revision )
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++<h1>Page html index</h1>
++</body>
++</html>
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/handler/HandlerInterceptorConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/handler/HandlerInterceptorConfig.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/handler/HandlerInterceptorConfig.java	(revision )
+@@ -0,0 +1,11 @@
++package com.spring.boot.web.handler;
++import org.springframework.context.annotation.Configuration;
++import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
++import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
++
++@Configuration
++public class HandlerInterceptorConfig extends WebMvcConfigurerAdapter{
++    public void addInterceptors(InterceptorRegistry registry){
++        //registry.addInterceptor(new UserHandlerInterceptor());
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/bean/IncodingConvert.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/IncodingConvert.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/IncodingConvert.java	(revision )
+@@ -0,0 +1,4 @@
++package com.spring.boot.bean;
++
++public interface IncodingConvert {
++}
+Index: springboot-web/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/resources/application.yml	(revision )
++++ springboot-web/src/main/resources/application.yml	(revision )
+@@ -0,0 +1,5 @@
++server:
++  port: 8080
++
++spring.view.prefix: /webapp/
++#spring.view.suffix: .html
+Index: springboot/src/main/java/com/spring/boot/st11/MyEventHandle.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st11/MyEventHandle.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st11/MyEventHandle.java	(revision )
+@@ -0,0 +1,12 @@
++package com.spring.boot.st11;
++
++import org.springframework.context.event.EventListener;
++import org.springframework.stereotype.Component;
++
++@Component
++public class MyEventHandle {
++    @EventListener
++    public void event(MyApplicationEvent myApplicationEvent) {
++        System.out.println("MyEventHandle============ onApplicationEvent");
++    }
++}
+Index: .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml	(revision )
++++ .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.0">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.0/jackson-annotations-2.8.0.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.0/jackson-annotations-2.8.0-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.0/jackson-annotations-2.8.0-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/handler/UserHandlerInterceptor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/handler/UserHandlerInterceptor.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/handler/UserHandlerInterceptor.java	(revision )
+@@ -0,0 +1,28 @@
++package com.spring.boot.web.handler;
++
++import org.springframework.web.servlet.HandlerInterceptor;
++import org.springframework.web.servlet.ModelAndView;
++
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++
++/**
++ * 拦截器
++ */
++public class UserHandlerInterceptor implements HandlerInterceptor {
++    @Override
++    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
++        System.out.println("================preHandle===============");
++        return true;
++    }
++
++    @Override
++    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
++        System.out.println("================postHandle===============");
++    }
++
++    @Override
++    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
++        System.out.println("================afterCompletion===============");
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport2.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/ServzrSuccessReport2.java	(revision )
+@@ -0,0 +1,16 @@
++package com.spring.boot.st12;
++
++import org.springframework.boot.CommandLineRunner;
++import org.springframework.core.annotation.Order;
++import org.springframework.stereotype.Component;
++
++import java.util.Arrays;
++
++@Order(2)
++@Component
++public class ServzrSuccessReport2 implements CommandLineRunner {
++    @Override
++    public void run(String... strings) throws Exception {
++        System.out.println("B: ================ServzrSuccessReport================"+ Arrays.asList(strings));
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/start/MyConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/start/MyConfig.java	(revision )
++++ springboot/src/main/java/com/spring/boot/start/MyConfig.java	(revision )
+@@ -0,0 +1,56 @@
++package com.spring.boot.start;
++
++import org.springframework.boot.context.properties.ConfigurationProperties;
++import org.springframework.context.annotation.PropertySource;
++import org.springframework.stereotype.Component;
++
++@Component
++@PropertySource("classpath:dbconfig.yml")
++@ConfigurationProperties(prefix = "jdbc")
++public class MyConfig {
++
++    private String jdbcUrl;
++    private String driverClass;
++    private String user;
++    private String password;
++
++    public void show(){
++        System.out.println("=============================MyConfig=============================");
++        System.out.println("jdbcUrl: "+ jdbcUrl);
++        System.out.println("driverClass: "+ driverClass);
++        System.out.println("user: "+ user);
++        System.out.println("password: "+ password);
++    }
++
++    public String getJdbcUrl() {
++        return jdbcUrl;
++    }
++
++    public void setJdbcUrl(String jdbcUrl) {
++        this.jdbcUrl = jdbcUrl;
++    }
++
++    public String getDriverClass() {
++        return driverClass;
++    }
++
++    public void setDriverClass(String driverClass) {
++        this.driverClass = driverClass;
++    }
++
++    public String getUser() {
++        return user;
++    }
++
++    public void setUser(String user) {
++        this.user = user;
++    }
++
++    public String getPassword() {
++        return password;
++    }
++
++    public void setPassword(String password) {
++        this.password = password;
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/springboot/SpringbootApplication.java
+===================================================================
+--- springboot/src/main/java/com/spring/boot/springboot/SpringbootApplication.java	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ springboot/src/main/java/com/spring/boot/start/SpringbootApplication.java	(revision )
+@@ -1,15 +1,22 @@
+-package com.spring.boot.springboot;
++package com.spring.boot.start;
+ 
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.context.ConfigurableApplicationContext;
+-
++/**
++ * 项目启动
++ */
+ @SpringBootApplication
+ public class SpringbootApplication {
+ 
+ 	public static void main(String[] args) {
+ 		//启动Springoot
+ 		ConfigurableApplicationContext context = SpringApplication.run(SpringbootApplication.class, args);
+-
++		//数据配置
++		context.getBean(MyData.class).show();
++		//多个配置文件
++		context.getBean(MyConfig.class).show();
++       //关闭
++		context.close();
+ 	}
+ }
+Index: springboot/src/main/java/com/spring/boot/bean/GBKCondition.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/GBKCondition.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/GBKCondition.java	(revision )
+@@ -0,0 +1,17 @@
++package com.spring.boot.bean;
++
++import org.springframework.context.annotation.Condition;
++import org.springframework.context.annotation.ConditionContext;
++import org.springframework.core.type.AnnotatedTypeMetadata;
++
++public class GBKCondition implements Condition {
++
++    @Override
++    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
++        String encoding  = System.getProperty("file.encoding");
++        if (encoding != null){
++            return  "gbk".equals(encoding.toLowerCase());
++        }
++        return false;
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/st11/SpringbootApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st11/SpringbootApplication.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st11/SpringbootApplication.java	(revision )
+@@ -0,0 +1,28 @@
++package com.spring.boot.st11;
++
++import com.spring.boot.enable.MyConfiguration;
++import com.spring.boot.enable.MyImportSelector;
++import com.spring.boot.enable.User;
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.ConfigurableApplicationContext;
++import org.springframework.context.annotation.Import;
++import org.springframework.scheduling.annotation.EnableAsync;
++
++/**
++ * 项目启动
++ */
++@SpringBootApplication
++@EnableAsync
++//@Import(MyImportSelector.class)
++@Import({MyApplicationEvent.class })
++public class SpringbootApplication {
++
++    public static void main(String[] args) {
++       SpringApplication app = new SpringApplication(SpringbootApplication.class);
++       //app.addListeners(new ApplicationListener());
++       ConfigurableApplicationContext context = app.run(args);
++       context.publishEvent(new MyApplicationEvent(new Object()));
++       context.close();
++    }
++}
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ .idea/encodings.xml	(revision )
+@@ -1,6 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/docs/目录.txt" charset="UTF-8" />
+     <file url="file://$PROJECT_DIR$/springboot" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/springboot-web" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/springboot/src/main/resources/application.yml" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/st11/ApplicationListener.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st11/ApplicationListener.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st11/ApplicationListener.java	(revision )
+@@ -0,0 +1,12 @@
++package com.spring.boot.st11;
++
++/**
++ * 监听器
++ */
++public class ApplicationListener implements org.springframework.context.ApplicationListener<MyApplicationEvent>{
++
++    @Override
++    public void onApplicationEvent(MyApplicationEvent myApplicationEvent) {
++        System.out.println("============ onApplicationEvent");
++    }
++}
+Index: .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_8_RELEASE.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_8_RELEASE.xml	(revision )
++++ .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_8_RELEASE.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.springframework.boot:spring-boot-starter-tomcat:1.5.8.RELEASE">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.5.8.RELEASE/spring-boot-starter-tomcat-1.5.8.RELEASE.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.5.8.RELEASE/spring-boot-starter-tomcat-1.5.8.RELEASE-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.5.8.RELEASE/spring-boot-starter-tomcat-1.5.8.RELEASE-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ .idea/compiler.xml	(revision )
+@@ -7,10 +7,12 @@
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+         <module name="springboot" />
++        <module name="springboot-web" />
+       </profile>
+     </annotationProcessing>
+     <bytecodeTargetLevel>
+       <module name="springboot" target="1.8" />
++      <module name="springboot-web" target="1.8" />
+     </bytecodeTargetLevel>
+   </component>
+ </project>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/bean/SpringbootApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/SpringbootApplication.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/SpringbootApplication.java	(revision )
+@@ -0,0 +1,20 @@
++package com.spring.boot.bean;
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.ConfigurableApplicationContext;
++
++/**
++ * 项目启动
++ */
++@SpringBootApplication
++public class SpringbootApplication {
++
++	public static void main(String[] args) {
++		//启动Springoot
++		ConfigurableApplicationContext context = SpringApplication.run(SpringbootApplication.class, args);
++		System.out.println(context.getBeansOfType(IncodingConvert.class));
++		System.out.println(context.getBeansOfType(Runnable.class));
++		//关闭
++		context.close();
++	}
++}
+Index: springboot/src/main/java/com/spring/boot/bean/UTFCondition.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/UTFCondition.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/UTFCondition.java	(revision )
+@@ -0,0 +1,19 @@
++package com.spring.boot.bean;
++
++import org.springframework.context.annotation.Condition;
++import org.springframework.context.annotation.ConditionContext;
++import org.springframework.core.type.AnnotatedTypeMetadata;
++
++public class UTFCondition implements Condition {
++    @Override
++    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
++        String encoding = System.getProperty("file.encoding");
++        System.out.println(encoding);
++        if (encoding != null) {
++            return "utf-8".equals(encoding.toLowerCase());
++        }
++        return false;
++    }
++
++
++}
+Index: springboot/src/main/java/com/spring/boot/enable/MyConfiguration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/enable/MyConfiguration.java	(revision )
++++ springboot/src/main/java/com/spring/boot/enable/MyConfiguration.java	(revision )
+@@ -0,0 +1,16 @@
++package com.spring.boot.enable;
++
++import org.springframework.context.annotation.Bean;
++
++public class MyConfiguration {
++
++    @Bean
++    public Runnable createRunnable1(){
++        return () ->{};
++    }
++
++    @Bean
++    public Runnable createRunnable2(){
++        return () ->{};
++    }
++}
+Index: .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml	(revision )
++++ .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_23.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:8.5.23">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.23/tomcat-embed-websocket-8.5.23.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.23/tomcat-embed-websocket-8.5.23-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.23/tomcat-embed-websocket-8.5.23-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_springframework_spring_web_4_3_12_RELEASE.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_springframework_spring_web_4_3_12_RELEASE.xml	(revision )
++++ .idea/libraries/Maven__org_springframework_spring_web_4_3_12_RELEASE.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.springframework:spring-web:4.3.12.RELEASE">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-web/4.3.12.RELEASE/spring-web-4.3.12.RELEASE.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-web/4.3.12.RELEASE/spring-web-4.3.12.RELEASE-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/spring-web/4.3.12.RELEASE/spring-web-4.3.12.RELEASE-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/st12/MyApplicationContextInitializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/MyApplicationContextInitializer.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/MyApplicationContextInitializer.java	(revision )
+@@ -0,0 +1,13 @@
++package com.spring.boot.st12;
++
++import org.springframework.beans.factory.config.ConfigurableBeanFactory;
++import org.springframework.context.ApplicationContextInitializer;
++import org.springframework.context.ConfigurableApplicationContext;
++
++public class MyApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
++    @Override
++    public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
++        System.out.println("bean count: " + configurableApplicationContext.getBeanDefinitionCount());
++        //ConfigurableBeanFactory bf = configurableApplicationContext.getBeanFactory();
++    }
++}
+Index: .idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml	(revision )
++++ .idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.jboss.logging:jboss-logging:3.3.1.Final">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/jboss/logging/jboss-logging/3.3.1.Final/jboss-logging-3.3.1.Final-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml	(revision )
++++ .idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: javax.validation:validation-api:1.1.0.Final">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ .idea/modules.xml	(revision )
+@@ -4,6 +4,7 @@
+     <modules>
+       <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/SpringBoot.iml" />
+       <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
++      <module fileurl="file://$PROJECT_DIR$/springboot-web/springboot-web.iml" filepath="$PROJECT_DIR$/springboot-web/springboot-web.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/app/SpringbootWebApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/app/SpringbootWebApplication.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/app/SpringbootWebApplication.java	(revision )
+@@ -0,0 +1,13 @@
++package com.spring.boot.web.app;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
++//exclude = ErrorMvcAutoConfiguration.class =>关闭默认的异常处理
++@SpringBootApplication(scanBasePackages = "com.spring.boot.web",exclude = ErrorMvcAutoConfiguration.class)
++public class SpringbootWebApplication{
++
++	public static void main(String[] args) {
++		SpringApplication.run(SpringbootWebApplication.class, args);
++	}
++}
+Index: springboot/src/main/java/com/spring/boot/st11/MyApplicationEvent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st11/MyApplicationEvent.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st11/MyApplicationEvent.java	(revision )
+@@ -0,0 +1,12 @@
++package com.spring.boot.st11;
++
++import org.springframework.context.ApplicationEvent;
++
++/**
++ * 定义事件
++ */
++public class MyApplicationEvent extends ApplicationEvent {
++    public MyApplicationEvent(Object source) {
++        super(source);
++    }
++}
+Index: .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_8_RELEASE.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_8_RELEASE.xml	(revision )
++++ .idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_8_RELEASE.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.5.8.RELEASE/spring-boot-starter-web-1.5.8.RELEASE.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.5.8.RELEASE/spring-boot-starter-web-1.5.8.RELEASE-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.5.8.RELEASE/spring-boot-starter-web-1.5.8.RELEASE-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml	(revision )
++++ .idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_23.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.23">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.23/tomcat-embed-core-8.5.23-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/uiDesigner.xml	(revision )
++++ .idea/uiDesigner.xml	(revision )
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.png" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.png" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/bean/GBKIncodingConvert.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/GBKIncodingConvert.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/GBKIncodingConvert.java	(revision )
+@@ -0,0 +1,4 @@
++package com.spring.boot.bean;
++
++public class GBKIncodingConvert implements IncodingConvert {
++}
+Index: .idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml	(revision )
++++ .idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: org.hibernate:hibernate-validator:5.3.5.Final">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/hibernate/hibernate-validator/5.3.5.Final/hibernate-validator-5.3.5.Final.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/org/hibernate/hibernate-validator/5.3.5.Final/hibernate-validator-5.3.5.Final-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/org/hibernate/hibernate-validator/5.3.5.Final/hibernate-validator-5.3.5.Final-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot-web/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/pom.xml	(revision )
++++ springboot-web/pom.xml	(revision )
+@@ -0,0 +1,57 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++
++	<groupId>com.spring.boot.web</groupId>
++	<artifactId>springboot-web</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<packaging>jar</packaging>
++
++	<name>springboot-web</name>
++	<description>Demo project for Spring Boot</description>
++
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>1.5.8.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++
++	<properties>
++		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
++		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
++		<java.version>1.8</java.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++		</dependency>
++
++		<dependency>
++			<groupId>org.apache.tomcat.embed</groupId>
++			<artifactId>tomcat-embed-jasper</artifactId>
++			<version>8.5.16</version>
++		</dependency>
++
++	</dependencies>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++
++</project>
+Index: springboot/src/main/java/com/spring/boot/enable/SpringbootApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/enable/SpringbootApplication.java	(revision )
++++ springboot/src/main/java/com/spring/boot/enable/SpringbootApplication.java	(revision )
+@@ -0,0 +1,30 @@
++package com.spring.boot.enable;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++import org.springframework.context.ConfigurableApplicationContext;
++import org.springframework.context.annotation.Import;
++import org.springframework.scheduling.annotation.EnableAsync;
++
++/**
++ * 项目启动
++ */
++@SpringBootApplication
++@EnableAsync
++//@Import(MyImportSelector.class)
++@Import({User.class ,MyConfiguration.class , MyImportSelector.class})
++public class SpringbootApplication {
++
++    public static void main(String[] args) {
++        //启动Springoot
++        ConfigurableApplicationContext context = SpringApplication.run(SpringbootApplication.class, args);
++//        context.getBean(Runnable.class).run();
++//        System.out.println("------------------end----------------------");
++       System.out.println(context.getBean(User.class));
++        System.out.println(context.getBean(User.class));
++
++//
++        //关闭
++        context.close();
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/bean/UserConfiguration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/UserConfiguration.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/UserConfiguration.java	(revision )
+@@ -0,0 +1,28 @@
++package com.spring.boot.bean;
++
++import org.springframework.boot.SpringBootConfiguration;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
++import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
++import org.springframework.context.annotation.Bean;
++
++@SpringBootConfiguration
++public class UserConfiguration {
++
++    @Bean
++    @ConditionalOnProperty(name = "runnable.enabled",havingValue = "true",matchIfMissing = true)
++    public Runnable createRunnable(){
++        return () ->{};
++    }
++    @Bean
++    @ConditionalOnClass(name = "com.google.gson.Gson;")
++    public Runnable createGsonRunnable(){
++        return () ->{};
++    }
++
++    @Bean
++    @ConditionalOnBean(name = "user")
++    public Runnable createBeanRunnable(){
++        return () ->{};
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/bean/IncodingConvertConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/IncodingConvertConfig.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/IncodingConvertConfig.java	(revision )
+@@ -0,0 +1,21 @@
++package com.spring.boot.bean;
++
++import org.springframework.boot.SpringBootConfiguration;
++import org.springframework.context.annotation.Bean;
++import org.springframework.context.annotation.Conditional;
++
++@SpringBootConfiguration
++public class IncodingConvertConfig {
++
++    @Bean
++    @Conditional(UTFCondition.class)
++    public IncodingConvert createUTF8IncodingConvert(){
++        return new UTf8IncodingConvert();
++    }
++
++    @Bean
++    @Conditional(GBKCondition.class)
++    public IncodingConvert createGBKIncodingConvert(){
++        return new GBKIncodingConvert();
++    }
++}
+Index: springboot-web/src/main/resources/public/404.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/resources/public/404.html	(revision )
++++ springboot-web/src/main/resources/public/404.html	(revision )
+@@ -0,0 +1,10 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Title</title>
++</head>
++<body>
++<h1>404</h1>
++</body>
++</html>
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/st12/EzApplicationContextInitializer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/st12/EzApplicationContextInitializer.java	(revision )
++++ springboot/src/main/java/com/spring/boot/st12/EzApplicationContextInitializer.java	(revision )
+@@ -0,0 +1,11 @@
++package com.spring.boot.st12;
++
++import org.springframework.context.ApplicationContextInitializer;
++import org.springframework.context.ConfigurableApplicationContext;
++
++public class EzApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
++    @Override
++    public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
++        System.out.println("========================" + configurableApplicationContext.getBeanDefinitionCount());
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/enable/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/enable/User.java	(revision )
++++ springboot/src/main/java/com/spring/boot/enable/User.java	(revision )
+@@ -0,0 +1,5 @@
++package com.spring.boot.enable;
++
++public class User {
++
++}
+Index: .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml	(revision )
++++ .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_10.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.10">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.10/jackson-core-2.8.10-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: springboot/src/main/resources/dbconfig.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/resources/dbconfig.yml	(revision )
++++ springboot/src/main/resources/dbconfig.yml	(revision )
+@@ -0,0 +1,4 @@
++jdbc:jdbcUrl: jdbc:mysql:///mybatis_db?characterEncoding=UTF-8
++jdbc.driverClass: com.mysql.jdbc.Driver
++jdbc.user: root
++jdbc.password: 1230
+\ No newline at end of file
+Index: springboot/src/main/java/com/spring/boot/start/MyData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/start/MyData.java	(revision )
++++ springboot/src/main/java/com/spring/boot/start/MyData.java	(revision )
+@@ -0,0 +1,52 @@
++package com.spring.boot.start;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.beans.factory.annotation.Value;
++import org.springframework.boot.context.properties.ConfigurationProperties;
++import org.springframework.core.env.Environment;
++import org.springframework.stereotype.Component;
++
++import java.util.ArrayList;
++import java.util.List;
++
++@Component
++@ConfigurationProperties(prefix = "ds")
++public class MyData {
++
++    @Autowired
++    private Environment evn;
++
++    @Value("${jdbc.jdbcUrl}")
++    private String jdbcUrl;
++
++    @Value("${jdbc.jdbcUrls}")
++    private String jdbcUrls;
++
++    private List<String> list = new ArrayList<>();
++
++    public void show(){
++        System.out.println("============================MyData==============================");
++        System.out.println("jdbc.jdbcUrl: "+ evn.getProperty("jdbc.jdbcUrl"));
++        System.out.println("jdbcUrl: "+ jdbcUrl);
++        System.out.println("jdbcUrls: "+ jdbcUrls);
++        System.out.println(list.size());
++    }
++
++    public List<String> getList() {
++        return list;
++    }
++
++    public void setList(List<String> list) {
++        this.list = list;
++    }
++
++    @Override
++    public String toString() {
++        return "MyData{" +
++                "evn=" + evn +
++                ", jdbcUrl='" + jdbcUrl + '\'' +
++                ", jdbcUrls='" + jdbcUrls + '\'' +
++                ", list=" + list +
++                '}';
++    }
++}
+Index: springboot/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/resources/application.yml	(revision )
++++ springboot/src/main/resources/application.yml	(revision )
+@@ -0,0 +1,10 @@
++jdbc.jdbcUrl: jdbc:mysql:///mybatis_db?characterEncoding=UTF-8
++jdbc.jdbcUrls: this myData ${jdbc.jdbcUrl}
++ds.list[0]: 123
++ds.list[1]: 456
++ds.list[2]: 789
++runnable.enabled: true
++#配置监听器
++#context.listener.classes: com.spring.boot.st11.ApplicationListener
++context.initializer.classes: com.spring.boot.st12.MyApplicationContextInitializer,com.spring.boot.st12.EzApplicationContextInitializer
++#context.initializer.classes: com.spring.boot.st12.EzApplicationContextInitializer
+\ No newline at end of file
+Index: springboot-web/src/main/java/com/spring/boot/web/handler/CommonErrorPageRegistry.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot-web/src/main/java/com/spring/boot/web/handler/CommonErrorPageRegistry.java	(revision )
++++ springboot-web/src/main/java/com/spring/boot/web/handler/CommonErrorPageRegistry.java	(revision )
+@@ -0,0 +1,22 @@
++package com.spring.boot.web.handler;
++
++import org.springframework.boot.web.servlet.ErrorPage;
++import org.springframework.boot.web.servlet.ErrorPageRegistrar;
++import org.springframework.boot.web.servlet.ErrorPageRegistry;
++import org.springframework.http.HttpStatus;
++import org.springframework.stereotype.Component;
++
++/**
++ * 异常处理
++ */
++@Component
++public class CommonErrorPageRegistry implements ErrorPageRegistrar {
++    @Override
++    public void registerErrorPages(ErrorPageRegistry errorPageRegistry) {
++        ErrorPage e404 = new ErrorPage(HttpStatus.NOT_FOUND,"/404.html");
++        System.out.println("404");
++        ErrorPage e500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/500.html");
++        System.out.println("500");
++        errorPageRegistry.addErrorPages(e404,e500);
++    }
++}
+Index: springboot/src/main/java/com/spring/boot/bean/UTf8IncodingConvert.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/src/main/java/com/spring/boot/bean/UTf8IncodingConvert.java	(revision )
++++ springboot/src/main/java/com/spring/boot/bean/UTf8IncodingConvert.java	(revision )
+@@ -0,0 +1,4 @@
++package com.spring.boot.bean;
++
++public class UTf8IncodingConvert implements IncodingConvert {
++}
+Index: .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml	(revision )
++++ .idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_10.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.10">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.10/jackson-databind-2.8.10-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/libraries/Maven__com_google_code_gson_gson_2_2_3.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_google_code_gson_gson_2_2_3.xml	(revision )
++++ .idea/libraries/Maven__com_google_code_gson_gson_2_2_3.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.google.code.gson:gson:2.2.3">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/google/code/gson/gson/2.2.3/gson-2.2.3.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/com/google/code/gson/gson/2.2.3/gson-2.2.3-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/google/code/gson/gson/2.2.3/gson-2.2.3-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ .idea/misc.xml	(revision )
+@@ -4,6 +4,7 @@
+     <option name="originalFiles">
+       <list>
+         <option value="$PROJECT_DIR$/springboot/pom.xml" />
++        <option value="$PROJECT_DIR$/springboot-web/pom.xml" />
+       </list>
+     </option>
+   </component>
+Index: springboot/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- springboot/pom.xml	(revision c37ce2de7d55ae358d7391a0b4238d957a7ed9fc)
++++ springboot/pom.xml	(revision )
+@@ -35,6 +35,12 @@
+ 			<artifactId>spring-boot-starter-test</artifactId>
+ 			<scope>test</scope>
+ 		</dependency>
++		<dependency>
++			<groupId>com.google.code.gson</groupId>
++			<artifactId>gson</artifactId>
++			<version>2.2.3</version>
++		</dependency>
++
+ 	</dependencies>
+ 
+ 	<build>
+Index: .idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml	(revision )
++++ .idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml	(revision )
+@@ -0,0 +1,13 @@
++<component name="libraryTable">
++  <library name="Maven: com.fasterxml:classmate:1.3.4">
++    <CLASSES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar!/" />
++    </CLASSES>
++    <JAVADOC>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/classmate/1.3.4/classmate-1.3.4-javadoc.jar!/" />
++    </JAVADOC>
++    <SOURCES>
++      <root url="jar://$USER_HOME$/.m2/repository/com/fasterxml/classmate/1.3.4/classmate-1.3.4-sources.jar!/" />
++    </SOURCES>
++  </library>
++</component>
+\ No newline at end of file

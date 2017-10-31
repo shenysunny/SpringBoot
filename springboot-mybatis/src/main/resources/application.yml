@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+    datasource:
+        url: jdbc:mysql:///mybatis_db?characterEncoding=UTF-8
+        username: root
+        password: 1230
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.springboot.mybatis.entity
+
+#pagehelper��ҳ���
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
